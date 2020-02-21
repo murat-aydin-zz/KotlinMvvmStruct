@@ -58,16 +58,16 @@ ext{
     navigationVersion = '2.2.0-rc03'
     threetenabpVersion = '1.2.1'
     stethoVersion = '1.5.1'
+    circleImageViewVersion = '3.0.1'
     legacySupportv4Version = '1.0.0'
     lifecycleViewModelKtxVersion = '2.2.0-rc3'
     lifecycleVersion = '2.1.0'
     roomVersion = '2.2.3'
     dataBindingVersion = '3.5.3'
-    shadowViewVersion = '0.0.3'
     firebaseCoreVersion = '17.2.1'
     firebaseDatabaseVersion = '19.2.0'
     firebaseMessagingVersion = '20.1.0'
-    algoliaVersion = '3.+'
+    firebaseAnalyticsVersion = '17.2.2'
     moshiConverterVersion = '2.7.0'
     moshiVersion = "1.9.2"
 
@@ -118,9 +118,7 @@ ext{
     firebaseCore = "com.google.firebase:firebase-core:$firebaseCoreVersion"
     firebaseDatabase = "com.google.firebase:firebase-database:$firebaseDatabaseVersion"
     firebaseMessaging = "com.google.firebase:firebase-messaging:$firebaseMessagingVersion"
-
-    //algolia
-    algolia = "com.algolia:algoliasearch-android:$algoliaVersion"
+    firebaseAnalytics =  "com.google.firebase:firebase-analytics:$firebaseAnalyticsVersion"
 
     //navigation
     navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
@@ -155,11 +153,11 @@ ext{
     //picasso
     picasso = "com.squareup.picasso:picasso:$picassoVersion"
 
+    //circleImageView
+    circleImageView = "de.hdodenhof:circleimageview:$circleImageViewVersion"
+
     //threetenabp
     threetenabp = "com.jakewharton.threetenabp:threetenabp:$threetenabpVersion"
-
-    //shadowView
-    shadowView = "com.loopeer.lib:shadow:$shadowViewVersion"
 
     //timber
     timber = "com.jakewharton.timber:timber:$timberVersion"

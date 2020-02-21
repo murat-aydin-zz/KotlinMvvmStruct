@@ -1,9 +1,7 @@
-package com.murataydin.app.mvvmstruct.ui.main.home
+package com.murataydin.app.mvvmstruct.ui.home
 
-import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.switchMap
 import com.murataydin.app.mvvmstruct.core.BaseViewModel
 import com.murataydin.app.mvvmstruct.domain.response.Comics
 import com.murataydin.app.mvvmstruct.domain.usecase.ComicsUseCase
@@ -14,8 +12,9 @@ import javax.inject.Inject
 
 
 class HomeFragmentViewModel @Inject internal constructor(private val comicsUseCase: ComicsUseCase) : BaseViewModel() {
-    val dummyComicLiveData = MutableLiveData<HomeViewState>()
 
+    private val _dummyComicLiveData: MutableLiveData<HomeViewState> = MutableLiveData()
+    val dummyComicLiveData: LiveData<HomeViewState> = _dummyComicLiveData
 
     fun getAllComicList() {
         comicsUseCase
@@ -26,7 +25,7 @@ class HomeFragmentViewModel @Inject internal constructor(private val comicsUseCa
     }
 
     private fun onGetComicResultReady(resource: Resource<Comics>) {
-        dummyComicLiveData.value = HomeViewState(
+        _dummyComicLiveData.value = HomeViewState(
                 status = resource.status,
                 error = resource.error,
                 data = resource.data

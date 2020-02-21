@@ -2,6 +2,7 @@ package com.murataydin.app.mvvmstruct
 
 import android.app.Activity
 import android.app.Application
+import com.facebook.stetho.Stetho
 import com.murataydin.app.mvvmstruct.di.AppInjector
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -19,6 +20,8 @@ class App : Application(), HasActivityInjector {
         super.onCreate()
 
         AppInjector.init(this)
+        if (BuildConfig.DEBUG)
+            Stetho.initializeWithDefaults(this)
     }
 
 }

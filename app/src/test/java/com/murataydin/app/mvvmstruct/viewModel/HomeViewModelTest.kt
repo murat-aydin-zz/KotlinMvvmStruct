@@ -4,12 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth
-import com.murataydin.app.mvvmstruct.utils.domain.Status
 import com.murataydin.app.mvvmstruct.domain.usecase.ComicsUseCase
-import com.murataydin.app.mvvmstruct.ui.main.home.HomeFragmentViewModel
-import com.murataydin.app.mvvmstruct.ui.main.home.HomeViewState
+import com.murataydin.app.mvvmstruct.ui.home.HomeFragmentViewModel
+import com.murataydin.app.mvvmstruct.ui.home.HomeViewState
+import com.murataydin.app.mvvmstruct.utils.domain.Status
 import io.mockk.MockKAnnotations
-import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
 import io.mockk.verify
@@ -22,6 +21,7 @@ import org.robolectric.annotation.Config
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
  */
+
 @Config(sdk = [Build.VERSION_CODES.P])
 @RunWith(AndroidJUnit4::class)
 class HomeViewModelTest {
@@ -32,7 +32,6 @@ class HomeViewModelTest {
 
     @MockK
     lateinit var comicsUseCase: ComicsUseCase
-
 
     private lateinit var homeFragmentViewModel: HomeFragmentViewModel
 

@@ -1,7 +1,6 @@
-package com.murataydin.app.mvvmstruct.ui.main.home
+package com.murataydin.app.mvvmstruct.ui.home
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil

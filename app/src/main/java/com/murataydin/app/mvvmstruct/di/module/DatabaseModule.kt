@@ -1,7 +1,7 @@
 package com.murataydin.app.mvvmstruct.di.module
 
-import androidx.room.Room
 import android.content.Context
+import androidx.room.Room
 import com.murataydin.app.mvvmstruct.db.AppDatabase
 import dagger.Module
 import dagger.Provides
@@ -17,5 +17,4 @@ class DatabaseModule {
         return Room.databaseBuilder(context,
                 AppDatabase::class.java, "example-db").build()
     }
-
 }

@@ -73,6 +73,6 @@
 
 <variable
     name="viewModel"
-    type="com.murataydin.app.mvvmstruct.ui.main.home.ComicsItemViewModel" />
+    type="com.murataydin.app.mvvmstruct.ui.home.ComicsItemViewModel" />
 </data>
     </layout>

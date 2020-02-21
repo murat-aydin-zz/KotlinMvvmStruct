@@ -1,12 +1,10 @@
 package com.murataydin.app.mvvmstruct.ui.main
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.onNavDestinationSelected
 import com.google.android.material.navigation.NavigationView
@@ -17,7 +15,7 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
-class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>(MainActivityViewModel::class.java), HasSupportFragmentInjector , NavigationView.OnNavigationItemSelectedListener{
+class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>(MainActivityViewModel::class.java), HasSupportFragmentInjector, NavigationView.OnNavigationItemSelectedListener {
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
@@ -34,18 +32,20 @@ class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>(Ma
         super.onCreate(savedInstanceState)
         setupNavigation()
     }
+
     private fun setupNavigation() {
 
         val navController = findNavController(R.id.container_fragment)
         NavigationUI.setupWithNavController(binding.navigationView, navController)
-
     }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home ->
                 binding.drawerLayout.openDrawer(GravityCompat.START)
 
         }
+
         return item.onNavDestinationSelected(findNavController(R.id.container_fragment)) || super.onOptionsItemSelected(item)
     }
 }

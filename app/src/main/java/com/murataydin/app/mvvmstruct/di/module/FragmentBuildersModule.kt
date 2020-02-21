@@ -1,6 +1,6 @@
 package com.murataydin.app.mvvmstruct.di.module
 
-import com.murataydin.app.mvvmstruct.ui.main.home.HomeFragment
+import com.murataydin.app.mvvmstruct.ui.home.HomeFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -9,6 +9,6 @@ import dagger.android.ContributesAndroidInjector
 abstract class FragmentBuildersModule {
 
    @ContributesAndroidInjector
-    abstract fun contributeHomeFragment(): HomeFragment
+   abstract fun contributeHomeFragment(): HomeFragment
 
 }
