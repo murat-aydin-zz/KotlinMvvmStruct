@@ -1,7 +1,6 @@
-package com.faskn.app.weatherapp.utils.domain
+package com.murataydin.app.mvvmstruct.utils.domain
 
 import androidx.annotation.NonNull
-import com.faskn.app.weatherapp.utils.domain.Status.*
 
 /*
  * Copyright (C) 2017 The Android Open Source Project

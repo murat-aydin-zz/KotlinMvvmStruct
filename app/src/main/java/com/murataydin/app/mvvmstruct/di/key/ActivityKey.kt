@@ -1,12 +1,8 @@
-package com.faskn.app.weatherapp.di.key
+package com.murataydin.app.mvvmstruct.di.key
 
 import android.app.Activity
 import dagger.MapKey
 import kotlin.reflect.KClass
-
-/**
- * Created by Furkan on 2019-10-16
- */
 
 @MapKey
 @Retention(AnnotationRetention.RUNTIME)

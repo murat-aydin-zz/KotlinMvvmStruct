@@ -2,7 +2,7 @@ package com.murataydin.app.mvvmstruct.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.faskn.app.weatherapp.di.key.ViewModelKey
+import com.murataydin.app.mvvmstruct.di.key.ViewModelKey
 import com.murataydin.app.mvvmstruct.di.ViewModelFactory
 import com.murataydin.app.mvvmstruct.ui.main.MainActivityViewModel
 import com.murataydin.app.mvvmstruct.ui.main.home.HomeFragmentViewModel

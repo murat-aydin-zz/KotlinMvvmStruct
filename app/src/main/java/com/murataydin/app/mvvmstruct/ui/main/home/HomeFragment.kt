@@ -1,6 +1,6 @@
 package com.murataydin.app.mvvmstruct.ui.main.home
 
-import com.faskn.app.weatherapp.di.Injectable
+import com.murataydin.app.mvvmstruct.di.Injectable
 import com.murataydin.app.mvvmstruct.R
 import com.murataydin.app.mvvmstruct.core.BaseFragment
 import com.murataydin.app.mvvmstruct.databinding.FragmentHomeBinding

@@ -1,11 +1,10 @@
-import android.content.SharedPreferences
 import android.os.Build
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.faskn.app.weatherapp.utils.domain.Status
 import com.google.common.truth.Truth
+import com.murataydin.app.mvvmstruct.utils.domain.Status
 import com.murataydin.app.mvvmstruct.domain.usecase.ComicsUseCase
 import com.murataydin.app.mvvmstruct.ui.main.home.HomeFragmentViewModel
 import com.murataydin.app.mvvmstruct.ui.main.home.HomeViewState
@@ -23,6 +22,7 @@ import org.robolectric.annotation.Config
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
  */
+@Config(sdk = [Build.VERSION_CODES.P])
 @RunWith(AndroidJUnit4::class)
 class HomeViewModelTest {
 
@@ -51,5 +51,14 @@ class HomeViewModelTest {
         val viewStateLiveData: MutableLiveData<HomeViewState> = MutableLiveData()
         viewStateLiveData.postValue(HomeViewState(Status.SUCCESS, null, null))
 
+        // When
+        homeFragmentViewModel.getAllComicList()
+
+        // Then
+        val comicsViewStateSlots = mutableListOf<HomeViewState>()
+        verify { viewStateObserver.onChanged(capture(comicsViewStateSlots)) }
+
+        val loadingState = comicsViewStateSlots[0]
+        Truth.assertThat(loadingState.status).isEqualTo(Status.LOADING)
     }
 }

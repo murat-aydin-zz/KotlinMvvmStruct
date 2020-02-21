@@ -1,4 +1,4 @@
-package com.faskn.app.weatherapp.utils.domain
+package com.murataydin.app.mvvmstruct.utils.domain
 
 
 // references :

@@ -7,10 +7,6 @@ import javax.inject.Provider
 import javax.inject.Singleton
 
 /**
- * Created by Furkan on 2019-10-16
- */
-
-/**
  * reference : https://github.com/googlesamples/android-architecture-components
  */
 @Singleton

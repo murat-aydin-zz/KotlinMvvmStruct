@@ -1,12 +1,8 @@
 package com.murataydin.app.mvvmstruct.ui.main.home
 
-import com.faskn.app.weatherapp.utils.domain.Status
+import com.murataydin.app.mvvmstruct.utils.domain.Status
 import com.murataydin.app.mvvmstruct.domain.response.Comics
-import com.murataydin.app.mvvmstruct.domain.response.DataItem
 
-/**
- * Created by Furkan on 2019-10-23
- */
 
 class HomeViewState(
         val status: Status,

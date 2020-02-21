@@ -1,4 +1,4 @@
-package com.faskn.app.weatherapp.di
+package com.murataydin.app.mvvmstruct.di
 
 import android.app.Activity
 import android.app.Application
@@ -18,14 +18,14 @@ import dagger.android.support.HasSupportFragmentInjector
  */
 
 object AppInjector {
-    fun init(weatherApp: App) {
+    fun init(app: App) {
         DaggerAppComponent
             .builder()
-            .application(weatherApp)
+            .application(app)
             .build()
-            .inject(weatherApp)
+            .inject(app)
 
-        weatherApp
+        app
             .registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
                 override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
                     handleActivity(activity)

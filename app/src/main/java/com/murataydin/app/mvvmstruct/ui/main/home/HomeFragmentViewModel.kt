@@ -4,10 +4,10 @@ import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.switchMap
-import com.faskn.app.weatherapp.utils.domain.Resource
 import com.murataydin.app.mvvmstruct.core.BaseViewModel
 import com.murataydin.app.mvvmstruct.domain.response.Comics
 import com.murataydin.app.mvvmstruct.domain.usecase.ComicsUseCase
+import com.murataydin.app.mvvmstruct.utils.domain.Resource
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.plusAssign
 import javax.inject.Inject
