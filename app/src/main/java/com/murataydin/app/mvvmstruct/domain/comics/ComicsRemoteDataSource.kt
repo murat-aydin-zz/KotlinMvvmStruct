@@ -7,7 +7,7 @@ import io.reactivex.Observable
 import io.reactivex.Single
 import javax.inject.Inject
 
-class ForecastRemoteDataSource @Inject constructor(private val api: AppAPI) {
+class ComicsRemoteDataSource @Inject constructor(private val api: AppAPI) {
 
     fun getAllComicList() = api.getComics()
 

@@ -17,7 +17,7 @@ class HomeFragment : BaseFragment<HomeFragmentViewModel, FragmentHomeBinding>(Ho
 
     override fun init() {
         super.init()
-        initForecastAdapter()
+        initComicsAdapter()
 
         viewModel.getAllComicList()
 
@@ -39,7 +39,7 @@ class HomeFragment : BaseFragment<HomeFragmentViewModel, FragmentHomeBinding>(Ho
         }
     }
 
-    private fun initForecastAdapter() {
+    private fun initComicsAdapter() {
         val adapter = HomeAdapter { item ->
         }
 
