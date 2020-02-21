@@ -1,0 +1,136 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.28.0'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+def STRING = 'String'
+def BUILD_TIME = 'BUILD_TIME'
+
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion "28.0.2"
+
+    defaultConfig {
+        applicationId "com.murataydin.app.mvvmstruct"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField STRING, BUILD_TIME, "\"${rootProject.ext.buildTime}\""
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            ext.enableCrashlytics = false
+        }
+    }
+    sourceSets{
+	main.java.srcDirs += 'src/main/kotlin'
+    }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation rootProject.ext.supportv4
+    implementation rootProject.ext.appCompat
+    implementation rootProject.ext.materialDesign
+    implementation rootProject.ext.recyclerView
+    implementation rootProject.ext.cardView
+    implementation rootProject.ext.coreKtx
+    implementation rootProject.ext.threetenabp
+    implementation rootProject.ext.timber
+    implementation rootProject.ext.navigationFragment
+    implementation rootProject.ext.navigationUI
+    implementation rootProject.ext.firebaseCore
+    implementation rootProject.ext.firebaseDatabase
+    implementation rootProject.ext.firebaseMessaging
+    implementation rootProject.ext.algolia
+    implementation rootProject.ext.dagger
+    implementation rootProject.ext.daggerSupport
+    kapt rootProject.ext.daggerApt
+    kapt rootProject.ext.daggerAnnotation
+    implementation rootProject.ext.rxJava
+    implementation rootProject.ext.rxKotlin
+    implementation rootProject.ext.rxAndroid
+    implementation rootProject.ext.rxAnimations
+    implementation rootProject.ext.retrofit
+    implementation rootProject.ext.okHttp
+    implementation rootProject.ext.moshi
+    implementation rootProject.ext.moshiConverter
+    implementation rootProject.ext.moshiKotlin
+    kapt rootProject.ext.moshiKapt
+    implementation rootProject.ext.rxJavaAdapter
+    implementation rootProject.ext.picasso
+    implementation rootProject.ext.shadowView
+    implementation rootProject.ext.lifecycleExt
+    kapt rootProject.ext.lifecycleAnnotation
+    implementation rootProject.ext.liveDataKtx
+    implementation rootProject.ext.lifecycleViewModelKtx
+    implementation rootProject.ext.roomRuntime
+    kapt rootProject.ext.roomCompiler
+    kapt rootProject.ext.dataBindingCompilerKapt
+    annotationProcessor rootProject.ext.dataBindingCompilerAnnotation
+    implementation rootProject.ext.stethoCore
+    implementation rootProject.ext.stethoOkHttp
+    implementation rootProject.ext.stethoUrlConnection
+    implementation 'com.google.firebase:firebase-analytics:17.2.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "com.sun.xml.bind:jaxb-core:2.3.0"
+    implementation "com.sun.xml.bind:jaxb-impl:2.3.0"
+    implementation "javax.activation:activation:1.1.1"
+    implementation rootProject.ext.constraintLayout
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+
+    testImplementation rootProject.ext.junit
+    testImplementation rootProject.ext.junitTestExt
+    androidTestImplementation rootProject.ext.androidxTestRunner
+    androidTestImplementation rootProject.ext.androidxTestRules
+    androidTestImplementation rootProject.ext.espressoCore
+    testImplementation rootProject.ext.truthExt
+    testImplementation rootProject.ext.truth
+    testImplementation rootProject.ext.mockK
+    testImplementation rootProject.ext.coreTesting
+    testImplementation rootProject.ext.robolectric
+
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs'
+    })
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}
+repositories {
+    mavenCentral()
+}
