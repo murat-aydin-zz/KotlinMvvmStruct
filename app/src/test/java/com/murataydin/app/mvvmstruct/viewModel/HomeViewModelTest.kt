@@ -53,6 +53,8 @@ class HomeViewModelTest {
         // When
         homeFragmentViewModel.getAllComicList()
 
+
+
         // Then
         val comicsViewStateSlots = mutableListOf<HomeViewState>()
         verify { viewStateObserver.onChanged(capture(comicsViewStateSlots)) }
