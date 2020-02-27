@@ -10,5 +10,5 @@ class HomeViewState(
         val error: Throwable? = null,
         val data: ComicsEntity? = null
 ) : BaseViewState(status, error) {
-    fun getComics() = data?.data
+    fun getComics() = data
 }

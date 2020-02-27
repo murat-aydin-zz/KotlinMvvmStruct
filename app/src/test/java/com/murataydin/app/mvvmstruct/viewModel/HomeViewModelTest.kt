@@ -45,7 +45,7 @@ class HomeViewModelTest {
     fun `given success state, when setComicsParams called, then update live data for success status`() {
         // Given
         val viewStateObserver: Observer<HomeViewState> = mockk(relaxUnitFun = true)
-        homeFragmentViewModel.dummyComicLiveData.observeForever(viewStateObserver)
+        homeFragmentViewModel.getComicsViewState().observeForever(viewStateObserver)
 
         val viewStateLiveData: MutableLiveData<HomeViewState> = MutableLiveData()
         viewStateLiveData.postValue(HomeViewState(Status.SUCCESS, null, null))
@@ -59,7 +59,7 @@ class HomeViewModelTest {
         verify { viewStateObserver.onChanged(capture(comicsViewStateSlots)) }
 
         val loadingState = comicsViewStateSlots[0]
-        Truth.assertThat(loadingState.status).isEqualTo(Status.LOADING)
+        Truth.assertThat(loadingState.status).isEqualTo(Status.SUCCESS)
     }
 }
 
