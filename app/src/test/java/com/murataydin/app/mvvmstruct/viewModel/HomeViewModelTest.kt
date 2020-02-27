@@ -59,6 +59,7 @@ class HomeViewModelTest {
         val comicsViewStateSlots = mutableListOf<HomeViewState>()
         verify { viewStateObserver.onChanged(capture(comicsViewStateSlots)) }
 
+
         val loadingState = comicsViewStateSlots[0]
         Truth.assertThat(loadingState.status).isEqualTo(Status.SUCCESS)
     }
