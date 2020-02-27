@@ -27,7 +27,7 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding>(@LayoutRes
 
     open fun init() {}
 
-    private val viewModel by lazy {
+    val viewModel by lazy {
         ViewModelProviders.of(this, (activity as? BaseActivity<*, *>)?.viewModelProviderFactory)
                 .get(viewModelClass)
     }

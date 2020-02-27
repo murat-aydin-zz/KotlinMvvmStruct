@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 
 @Entity()
 class Example {
-    @PrimaryKey(autoGenerate = true) var id: Long = 0
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0
     var exampleString: String = ""
 }

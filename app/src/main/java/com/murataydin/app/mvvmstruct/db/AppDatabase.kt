@@ -2,10 +2,21 @@ package com.murataydin.app.mvvmstruct.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.murataydin.app.mvvmstruct.db.dao.ExampleDao
-import com.murataydin.app.mvvmstruct.db.entities.Example
+import androidx.room.TypeConverters
+import com.murataydin.app.mvvmstruct.db.dao.ComicsDao
+import com.murataydin.app.mvvmstruct.db.entities.ComicsEntity
+import com.murataydin.app.mvvmstruct.utils.extensions.DataConverter
 
-@Database(entities = arrayOf(Example::class), version = 1)
+@Database(
+    entities = [
+        ComicsEntity::class
+    ],
+    version = 3
+)
+
+@TypeConverters(DataConverter::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun exampleDao(): ExampleDao
+
+    abstract fun comicsDao(): ComicsDao
+
 }

@@ -5,7 +5,9 @@ import com.murataydin.app.mvvmstruct.core.BaseFragment
 import com.murataydin.app.mvvmstruct.databinding.FragmentHomeBinding
 import com.murataydin.app.mvvmstruct.di.Injectable
 import com.murataydin.app.mvvmstruct.domain.response.DataItem
+import com.murataydin.app.mvvmstruct.domain.usecase.ComicsUseCase
 import com.murataydin.app.mvvmstruct.utils.extensions.observeNonNull
+import com.murataydin.app.mvvmstruct.utils.extensions.observeWith
 
 class HomeFragment : BaseFragment<HomeFragmentViewModel, FragmentHomeBinding>(R.layout.fragment_home, HomeFragmentViewModel::class.java), Injectable {
 
@@ -13,17 +15,16 @@ class HomeFragment : BaseFragment<HomeFragmentViewModel, FragmentHomeBinding>(R.
         super.init()
         initComicsAdapter()
 
-        binding.viewModel?.getAllComicList()
-        binding.viewModel?.dummyComicLiveData?.observeNonNull(viewLifecycleOwner) {
-            render(it)
-        }
-    }
+        viewModel.setComicsParams(ComicsUseCase.ComicsParams())
 
-    private fun render(homeViewState: HomeViewState) {
-        with(binding) {
-            viewState = homeViewState
-            initComics((homeViewState).data?.data)
-            executePendingBindings()
+
+        viewModel.getComicsViewState().observeWith(
+                viewLifecycleOwner
+        ) {
+            with(binding) {
+                viewState = it
+                it.data?.data?.let { comics -> initComics(comics) }
+            }
         }
     }
 

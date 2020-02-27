@@ -4,14 +4,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth
+import com.murataydin.app.mvvmstruct.domain.response.Comics
 import com.murataydin.app.mvvmstruct.domain.usecase.ComicsUseCase
 import com.murataydin.app.mvvmstruct.ui.home.HomeFragmentViewModel
 import com.murataydin.app.mvvmstruct.ui.home.HomeViewState
+import com.murataydin.app.mvvmstruct.utils.domain.Resource
 import com.murataydin.app.mvvmstruct.utils.domain.Status
-import io.mockk.MockKAnnotations
+import io.mockk.*
 import io.mockk.impl.annotations.MockK
-import io.mockk.mockk
-import io.mockk.verify
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -51,9 +51,8 @@ class HomeViewModelTest {
         viewStateLiveData.postValue(HomeViewState(Status.SUCCESS, null, null))
 
         // When
-        homeFragmentViewModel.getAllComicList()
-
-
+        every { comicsUseCase.execute(any()) } returns viewStateLiveData
+        homeFragmentViewModel.setComicsParams(ComicsUseCase.ComicsParams())
 
         // Then
         val comicsViewStateSlots = mutableListOf<HomeViewState>()
@@ -63,3 +62,5 @@ class HomeViewModelTest {
         Truth.assertThat(loadingState.status).isEqualTo(Status.LOADING)
     }
 }
+
+

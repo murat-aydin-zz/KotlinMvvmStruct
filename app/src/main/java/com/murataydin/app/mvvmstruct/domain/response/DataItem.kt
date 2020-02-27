@@ -1,8 +1,11 @@
 package com.murataydin.app.mvvmstruct.domain.response
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @JsonClass(generateAdapter = true)
 data class DataItem(
         @Json(name = "image")
@@ -29,4 +32,4 @@ data class DataItem(
 
         @Json(name = "artist_id")
         val artistId: String? = null
-)
+) : Parcelable
