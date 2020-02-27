@@ -4,14 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.common.truth.Truth
-import com.murataydin.app.mvvmstruct.domain.response.Comics
 import com.murataydin.app.mvvmstruct.domain.usecase.ComicsUseCase
 import com.murataydin.app.mvvmstruct.ui.home.HomeFragmentViewModel
 import com.murataydin.app.mvvmstruct.ui.home.HomeViewState
-import com.murataydin.app.mvvmstruct.utils.domain.Resource
 import com.murataydin.app.mvvmstruct.utils.domain.Status
-import io.mockk.*
+import io.mockk.MockKAnnotations
+import io.mockk.every
 import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
+import io.mockk.verify
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -45,7 +46,7 @@ class HomeViewModelTest {
     fun `given success state, when setComicsParams called, then update live data for success status`() {
         // Given
         val viewStateObserver: Observer<HomeViewState> = mockk(relaxUnitFun = true)
-        homeFragmentViewModel.dummyComicLiveData.observeForever(viewStateObserver)
+        homeFragmentViewModel.getComicsViewState().observeForever(viewStateObserver)
 
         val viewStateLiveData: MutableLiveData<HomeViewState> = MutableLiveData()
         viewStateLiveData.postValue(HomeViewState(Status.SUCCESS, null, null))
@@ -59,7 +60,7 @@ class HomeViewModelTest {
         verify { viewStateObserver.onChanged(capture(comicsViewStateSlots)) }
 
         val loadingState = comicsViewStateSlots[0]
-        Truth.assertThat(loadingState.status).isEqualTo(Status.LOADING)
+        Truth.assertThat(loadingState.status).isEqualTo(Status.SUCCESS)
     }
 }
 
